@@ -1,0 +1,31 @@
+(function(){
+    console.log('ItemsDiscovery.js');
+    var fs = require('fs');
+    var testData = fs.readFileSync('ItemsSamplePage.html', 'utf8');
+    const { JSDOM } = require("jsdom");
+    const { window } = new JSDOM(testData);
+    window.ENHANCEDSHOPPER = 'debug';
+    this.$ = require("jquery")(window);
+    this.window = window;
+    require('./../TamperMonkeyMain.js');
+    var $body = $('body');
+    var start = new Date();
+    window.ES.markItems($body);
+    var next = new Date();
+    window.ES.markItems($body);
+    var stop = new Date();
+    var firstRun = next - start;
+    var secondRun = stop - next;
+    console.log('1st run took ' + firstRun + 'ms');
+    console.log('2nd run took ' + secondRun + 'ms');
+
+    var test = [];
+    test[0] = $('[es-item=min]').length === 17;
+    test[1] = $('[es-item=max]').length  === 17;
+    test[2] = $('[es-cost]').length  === 17;
+    test[3] = $('[es-unit]').length  === 17;
+    test[4] = secondRun < firstRun;
+    var isSuccessful = true;
+    for(var i in test) if(!test[i]) isSuccessful = false;
+    console.log('Test ' + (isSuccessful ? 'Success!' : 'Failed.'));
+})();
