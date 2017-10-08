@@ -8,7 +8,7 @@
     require('./../TamperMonkeyMain.js');
 
     window.ES.ensureUnitRegex('gram');
-    var regex = window.ES.units['gram'].regEx;
+    var regex = window.ES.units['gram'].regex;
 
     var test = [];
     test[0] = 'extra2 x 2 X 2 gextra'.match(regex)[0] === '2 x 2 X 2 g';

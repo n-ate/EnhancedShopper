@@ -8,6 +8,7 @@
     require('./../TamperMonkeyMain.js');
 
     var test = [];
+    //weights//
     test[0] = window.ES.convertUnit('8 X 13.22773573125 ounce', 'kg', '').num === 3;
     test[1] = window.ES.convertUnit('8 X 13.22773573125oz', 'kg', '').num === 3;
     test[2] = window.ES.convertUnit('6.613867865625 pound', 'kilogram', '').num === 3;
@@ -16,7 +17,7 @@
     test[5] = window.ES.convertUnit('6x.5kg', 'kg', '').num === 3;
     test[6] = window.ES.convertUnit('150X20grams', 'kilogram', '').num === 3;
     test[7] = window.ES.convertUnit('30x10X10g', 'kg', '').num === 3;
-
+    //volumes//
     test[8] = window.ES.convertUnit('169.07028 fluid ounce', '', 'liter').num === 5;
     test[9] = window.ES.convertUnit('169.07028 floz', '', 'l').num === 5;
     test[10] = window.ES.convertUnit('2 x 2.641720483279517quart', '', 'liter').num === 5;
