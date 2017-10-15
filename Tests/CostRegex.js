@@ -7,6 +7,8 @@
     this.window = window;
     require('./../TamperMonkeyMain.js');
 
+    
+
     var regex = window.ES.costRegex;
 
     var test = [];
